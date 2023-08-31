@@ -8,7 +8,7 @@ check_mount_status() {
     else
         read -p "The file system is not mounted. Do you want to attempt to mount it? (y/n): " choice
         if [ "$choice" == "y" ]; then
-            mount "$mount_point"
+            mount /dev/xvda1 "$mount_point"
             df -hT "$mount_point" | awk 'NR==2 {print "Used Space:", $3, "Free Space:", $5}'
         else
             echo "File system is not mounted."
